@@ -1,5 +1,4 @@
-pandas
-uvicorn
-fastapi
-pyarrow
-fastparquet
+fastparquet==2023.10.1
+numpy==1.26.1
+pandas==2.1.2
+pyarrow==14.0.0
