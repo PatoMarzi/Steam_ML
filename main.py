@@ -229,4 +229,4 @@ def sentiment_analysis(year: int):
 # Start the server
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port = 8000, reload=True, access_log=False)
+    uvicorn.run(app, host="0.0.0.0", port = 10000, reload=True, access_log=False)
