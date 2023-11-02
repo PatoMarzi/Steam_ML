@@ -10,10 +10,6 @@ items = pd.read_parquet('./data/items.parquet')
 
 # We apply the str.lower() method so that it does not matter how the word is written.
 genreFunction['genres'] = genreFunction['genres'].str.lower()
-genreFunction['genres'].unique()
-
-mostPlayed = genreFunction.groupby('user_id')['playtime_forever'].sum()
-
 
 # The app.get decorator is used to associate the function with an HTTP GET request.
 # '/PlayTimeGenre/{genre}/' is the path for the endpoint, the {genre} is the parameter.
@@ -83,10 +79,6 @@ def UserForGenre(genre: str):
 
     if genres.empty:
         return f'The genre {genre} does not exist.'
-
-    # Group the DataSet by user ID, then sum the amount of hours played.
-    mostPlayed = genres.groupby(
-        'user_id')['playtime_forever'].sum().reset_index()
 
     # Locate the index for the player.
     player = genres.loc[genres['playtime_forever'].idxmax()]['user_id']
