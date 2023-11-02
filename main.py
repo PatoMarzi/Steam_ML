@@ -37,6 +37,7 @@ def PlayTimeGenre(genre: str):
 
     '''
     f1 = pd.read_parquet('./data/f1.parquet')
+    f1['genres'] = f1['genres'].str.lower()
     # We look in our DataSet if there is any match with the genre entered.
     genres = f1[f1['genres'] == genre.lower()]
     if genres.empty:
@@ -75,7 +76,7 @@ def UserForGenre(genre: str):
     Hours Played      0      0      2037    4102    1968     223     323    342     1224     112   
     '''
     f2 = pd.read_parquet('./data/f2.parquet')
-
+    f2['genres'] = f2['genres'].str.lower()
     # Look in the DataSet if there is any match with the genre entered.
     genres = f2[f2['genres'] == genre.lower()]
 
