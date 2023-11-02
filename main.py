@@ -94,11 +94,10 @@ def UserForGenre( genre : str ):
     # Create a new DF with just the year and playtime_forever columns
     hoursPlayedByYear = filteredDFWithPlayerID.groupby('year')['playtime_forever'].sum()
     
-    
-    print(f'{player} is the user with the most playtime for the genre "{genre.capitalize()}" with {filteredDFWithPlayerID["playtime_forever"].sum()} hours played.')
-    print(f'\nYear\tHours Played\n')
-    for year, hour in hoursPlayedByYear.items():
-        print(f'{year}\t{hour}\n')
+    hoursList = [ {'Year': year, 'hours': hours} for year, hours in hoursPlayedByYear.items()]
+    result = {f'{player} is the user with the most playtime for the genre "{genre.capitalize()}"\nHours Played: {hoursList}'
+              }
+    return result
 
 
 @app.get('/UsersRecommend/{year}/')
