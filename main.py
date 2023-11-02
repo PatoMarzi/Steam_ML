@@ -1,5 +1,4 @@
 import pandas as pd
-import uvicorn
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -229,3 +228,9 @@ def sentiment_analysis( year : int ):
             "Neutral": sentiment.get(1, 0),
             "Positive": sentiment.get(2, 0)}
             
+
+# Start the server
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
