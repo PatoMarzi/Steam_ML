@@ -3,13 +3,13 @@ import uvicorn
 from fastapi import FastAPI
 
 app = FastAPI()
-genreFunction = pd.read_parquet('./data/genre_functions.parquet')
-userRecommend = pd.read_parquet('./data/recommendations.parquet')
-items = pd.read_parquet('./data/items.parquet')
+# genreFunction = pd.read_parquet('./data/genre_functions.parquet')
+# userRecommend = pd.read_parquet('./data/recommendations.parquet')
+# items = pd.read_parquet('./data/items.parquet')
 
 
 # We apply the str.lower() method so that it does not matter how the word is written.
-genreFunction['genres'] = genreFunction['genres'].str.lower()
+# genreFunction['genres'] = genreFunction['genres'].str.lower()
 
 # The app.get decorator is used to associate the function with an HTTP GET request.
 # '/PlayTimeGenre/{genre}/' is the path for the endpoint, the {genre} is the parameter.
@@ -36,8 +36,9 @@ def PlayTimeGenre(genre: str):
     2006
 
     '''
+    f1 = pd.read_parquet('./data/f1.parquet')
     # We look in our DataSet if there is any match with the genre entered.
-    genres = genreFunction[genreFunction['genres'] == genre.lower()]
+    genres = f1[f1['genres'] == genre.lower()]
     if genres.empty:
         return f'The genre {genre} does not exist.'
 
@@ -73,9 +74,10 @@ def UserForGenre(genre: str):
     Year            2003    2006    2009    2010    2011    2012    2013    2014    2015    2016    
     Hours Played      0      0      2037    4102    1968     223     323    342     1224     112   
     '''
+    f2 = pd.read_parquet('./data/f2.parquet')
 
     # Look in the DataSet if there is any match with the genre entered.
-    genres = genreFunction[genreFunction['genres'] == genre.lower()]
+    genres = f2[f2['genres'] == genre.lower()]
 
     if genres.empty:
         return f'The genre {genre} does not exist.'
@@ -119,9 +121,9 @@ def UsersRecommend(year: int):
     >>> UsersRecommend(2021)
     Empire: Total War, Left 4 Dead 2, The Stanley Parable
     '''
-
+    f3 = pd.read_parquet('./data/f3.parquet')
     # Create a DataSet with rows that match the year.
-    givenYear = userRecommend[userRecommend['year'] == year]
+    givenYear = f3[f3['year'] == year]
 
     if givenYear.empty:
         return f'There are no records for the year {year}.'
@@ -155,15 +157,15 @@ def UsersNotRecommend(year: int):
     >>> UsersNotRecommend(2011)
     Carmageddon Max Pack, Left 4 Dead 2, The Stanley Parable
     '''
-
-    givenYear = userRecommend[userRecommend['year'] == year]
+    f4 = pd.read_parquet('./data/f4.parquet')
+    givenYear = f4[f4['year'] == year]
 
     if givenYear.empty:
         return f'There are no records for the year {year}.'
 
     # Group the games that are from the desired year and had negative reviews.
-    leastRecommendedGames = userRecommend[(userRecommend['year'] == year) & (
-        userRecommend['recommend'] == False)]
+    leastRecommendedGames = f4[(f4['year'] == year) & (
+        f4['recommend'] == False)]
 
     # Create a list that has the 3 least recommended games for that year.
     leastThree = (
@@ -202,13 +204,13 @@ def sentiment_analysis(year: int):
     >>>sentiment_analysis(2019)
     {Negative = 140, Neutral = 47, Positive = 115}
     '''
-
-    givenYear = userRecommend[userRecommend['year'] == year]
+    f5 = pd.read_parquet('./data/f5.parquet')
+    givenYear = f5[f5['year'] == year]
 
     if givenYear.empty:
         return f'There are no records for the year {year}.'
 
-    sentiment = userRecommend.groupby(
+    sentiment = f5.groupby(
         'year')['sentiment_analysis'].value_counts().unstack(fill_value=0)
 
     sentiment = sentiment.loc[year].to_dict()

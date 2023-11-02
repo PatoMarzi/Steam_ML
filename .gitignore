@@ -1,2 +1,7 @@
 /DataSets/
 /venv/
+/data/genre_functions
+/data/items.parquet
+/data/recommendations.parquet
+/data/review.parquet
+/data/steam.csv
