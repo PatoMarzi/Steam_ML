@@ -53,7 +53,7 @@ def PlayTimeGenre(genre: str):
 
 
 @app.get('/UserForGenre/{genre}/')
-def UserForGenre(genre: str):
+def UserForGenre( genre : str ):
     '''
     Find the user with the most hours played by genre, as well as hours played for each year.
 
@@ -61,12 +61,12 @@ def UserForGenre(genre: str):
     ----------
     genre : str
         Desired genre to look for.
-
+    
     Returns
     -------
     list
         The user name and the amount of hours played by year for that particular genre.
-
+    
     Examples
     -------
     >>> UserForGenre('Simulation')
@@ -75,14 +75,16 @@ def UserForGenre(genre: str):
     Year            2003    2006    2009    2010    2011    2012    2013    2014    2015    2016    
     Hours Played      0      0      2037    4102    1968     223     323    342     1224     112   
     '''
+    
     f2 = pd.read_parquet('./data/f2.parquet')
+
     f2['genres'] = f2['genres'].str.lower()
     # Look in the DataSet if there is any match with the genre entered.
     genres = f2[f2['genres'] == genre.lower()]
 
     if genres.empty:
         return f'The genre {genre} does not exist.'
-
+    
     # Locate the index for the player.
     player = genres.loc[genres['playtime_forever'].idxmax()]['user_id']
 
@@ -90,11 +92,10 @@ def UserForGenre(genre: str):
     filteredDFWithPlayerID = (genres[genres['user_id'] == player])
 
     # Create a new DF with just the year and playtime_forever columns
-    hoursPlayedByYear = filteredDFWithPlayerID.groupby(
-        'year')['playtime_forever'].sum()
-
-    print(
-        f'{player} is the user with the most playtime for the genre "{genre.capitalize()}" with {filteredDFWithPlayerID["playtime_forever"].sum()} hours played.')
+    hoursPlayedByYear = filteredDFWithPlayerID.groupby('year')['playtime_forever'].sum()
+    
+    
+    print(f'{player} is the user with the most playtime for the genre "{genre.capitalize()}" with {filteredDFWithPlayerID["playtime_forever"].sum()} hours played.')
     print(f'\nYear\tHours Played\n')
     for year, hour in hoursPlayedByYear.items():
         print(f'{year}\t{hour}\n')
