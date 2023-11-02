@@ -51,7 +51,7 @@ def PlayTimeGenre(genre: str):
     return f'Year with the most playtime hours for {genre}: {idResut}'
 
 
-@app.get('/PlayTimeGenre/{genre}/')
+@app.get('/UserForGenre/{genre}/')
 def UserForGenre(genre: str):
     '''
     Find the user with the most hours played by genre, as well as hours played for each year.
