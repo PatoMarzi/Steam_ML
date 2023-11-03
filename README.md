@@ -7,7 +7,7 @@
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 
-![Steam™ Logo](./assets/images/Steam.png)
+![Steam™ Logo](https://github.com/PatoMarzi/Steam_ML/blob/main/assets/images/steam.png)
 
 # This project simulates what a MLOps Engineer responsibilites and tasks are
 
