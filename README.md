@@ -7,7 +7,7 @@
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 
-![Steam™ Logo](https://github.com/PatoMarzi/Steam_ML/blob/main/assets/images/steam.png)
+![Steam Logo](assets/images/steam.png)
 
 # This project simulates what a MLOps Engineer responsibilites and tasks are
 
@@ -15,7 +15,7 @@
 
 # _Extraction, Transfrom & Load (ETL)_
 
-![ETL Process](./assets/images/ETL.png)
+![ETL Process](assets/images/ETL.png)
 
 - Our first step is to see what type of data are we working with, if it is text, images, videos, etc. We extract this data from a wide range of sources, depending our goal.
 
@@ -26,3 +26,20 @@
 #### [Click Here To See The Whole Process](https://github.com/PatoMarzi/Steam_ML/blob/main/ETL.ipynb)
 
 # _Exploratory Data Analysis (EDA)_
+
+An EDA process consists of analyzing the data, previously processed in the ETL, to gain insights, uncover styles and pick out relationships between different values.
+
+_A quick summary of what we did:_
+
+
+>+ Inspected the files to see how much memory they used
+>+ Deleted columns that were irrelevant
+>+ Review the data type of the columns, and change it in case it was not optimal
+>+ Ploted data to see if there were any outlier values and then discard it
+>+ Explored any relation between columns of the same or different files
+
+#### [Click Here To See The Whole Process](https://github.com/PatoMarzi/Steam_ML/blob/main/EDA.ipynb)
+
+# _Load Process_
+
+The last part of the ETL is the loading process.
