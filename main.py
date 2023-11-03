@@ -3,13 +3,6 @@ import uvicorn
 from fastapi import FastAPI
 
 app = FastAPI()
-# genreFunction = pd.read_parquet('./data/genre_functions.parquet')
-# userRecommend = pd.read_parquet('./data/recommendations.parquet')
-# items = pd.read_parquet('./data/items.parquet')
-
-
-# We apply the str.lower() method so that it does not matter how the word is written.
-# genreFunction['genres'] = genreFunction['genres'].str.lower()
 
 # The app.get decorator is used to associate the function with an HTTP GET request.
 # '/PlayTimeGenre/{genre}/' is the path for the endpoint, the {genre} is the parameter.
