@@ -1,4 +1,4 @@
-<h1 style = 'text-align: center'> STEAM game recommendation system </h1>
+# STEAM game recommendation system 
 
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
