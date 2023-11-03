@@ -53,7 +53,7 @@ def PlayTimeGenre(genre: str):
 
 
 @app.get('/UserForGenre/{genre}/')
-def UserForGenre( genre : str ):
+def UserForGenre(genre: str):
     '''
     Find the user with the most hours played by genre, as well as hours played for each year.
 
@@ -61,12 +61,12 @@ def UserForGenre( genre : str ):
     ----------
     genre : str
         Desired genre to look for.
-    
+
     Returns
     -------
     list
         The user name and the amount of hours played by year for that particular genre.
-    
+
     Examples
     -------
     >>> UserForGenre('Simulation')
@@ -75,7 +75,7 @@ def UserForGenre( genre : str ):
     Year            2003    2006    2009    2010    2011    2012    2013    2014    2015    2016    
     Hours Played      0      0      2037    4102    1968     223     323    342     1224     112   
     '''
-    
+
     f2 = pd.read_parquet('./data/f2.parquet')
 
     f2['genres'] = f2['genres'].str.lower()
@@ -84,7 +84,7 @@ def UserForGenre( genre : str ):
 
     if genres.empty:
         return f'The genre {genre} does not exist.'
-    
+
     # Locate the index for the player.
     player = genres.loc[genres['playtime_forever'].idxmax()]['user_id']
 
@@ -92,10 +92,12 @@ def UserForGenre( genre : str ):
     filteredDFWithPlayerID = (genres[genres['user_id'] == player])
 
     # Create a new DF with just the year and playtime_forever columns
-    hoursPlayedByYear = filteredDFWithPlayerID.groupby('year')['playtime_forever'].sum()
-    
-    hoursList = [ {'Year': year, 'hours': hours} for year, hours in hoursPlayedByYear.items()]
-    result = {f'{player} is the user with the most playtime for the genre "{genre.capitalize()}"\nHours Played: {hoursList}'
+    hoursPlayedByYear = filteredDFWithPlayerID.groupby(
+        'year')['playtime_forever'].sum()
+
+    hoursList = [{'Year': year, 'hours': hours}
+                 for year, hours in hoursPlayedByYear.items()]
+    result = {f'{player} is the user with the most playtime for the genre {genre.capitalize()} Hours Played: {hoursList}'
               }
     return result
 
@@ -224,4 +226,4 @@ def sentiment_analysis(year: int):
 # Start the server
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port = 10000, reload=True, access_log=False)
+    uvicorn.run(app, host="0.0.0.0", port=10000, reload=True, access_log=False)
