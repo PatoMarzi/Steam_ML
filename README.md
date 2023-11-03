@@ -23,6 +23,6 @@
 
 - The last step is to load our cleaned data into a web application. As mentioned before, the server allowed us to allocate 512MB of storage. An impetuous transformation process could delay the whole deploying process, causing setbacks and jeopardize the project.
 
-<h1 align = center > [Click Here To See The Whole Process](https://github.com/PatoMarzi/Steam_ML/blob/main/ETL.ipynb) </h1>
+#### [Click Here To See The Whole Process](https://github.com/PatoMarzi/Steam_ML/blob/main/ETL.ipynb)
 
 # _Exploratory Data Analysis (EDA)_
