@@ -31,14 +31,13 @@ An EDA process consists of analyzing the data, previously processed in the ETL, 
 
 _A quick summary of what we did:_
 
+> - Inspected the files to see how much memory they used
+> - Deleted columns that were irrelevant
+> - Review the data type of the columns, and change it in case it was not optimal
+> - Ploted data to see if there were any outlier values and then discard it
+> - Explored any relation between columns of the same or different
 
->+ Inspected the files to see how much memory they used
->+ Deleted columns that were irrelevant
->+ Review the data type of the columns, and change it in case it was not optimal
->+ Ploted data to see if there were any outlier values and then discard it
->+ Explored any relation between columns of the same or different 
-
->This is a cyclic process, meaning we would come back from to this stage and do more research in case what we had was not enough to make a correct decision
+> This is a cyclic process, meaning we would come back from to this stage and do more research in case what we had was not enough to make a correct decision
 
 #### [Click Here To See The Whole Process](https://github.com/PatoMarzi/Steam_ML/blob/main/EDA.ipynb)
 
@@ -47,9 +46,11 @@ _A quick summary of what we did:_
 Once we have a decent amount of data explored, we proceeded to test our API locally, making sure all functions were working properly, and then we loaded our application. In this case, we did so by deploying an API using `FastAPI` and `Render`, following the **REST API** criteria.
 
 #### Check the script [Here](https://github.com/PatoMarzi/Steam_ML/blob/main/main.py)
+
 #### Deployment [Here](https://steam-game-recommendation.onrender.com/)
 
 # Preview of the Web App
+
 ![Alt text](./assets/images/API.png)
 _Interface of the web app_
 <br>
