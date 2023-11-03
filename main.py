@@ -51,6 +51,8 @@ def PlayTimeGenre(genre: str):
 
     return f'Year with the most playtime hours for {genre}: {idResut}'
 
+if __name__ == "__main__":
+    uvicorn.run("main:app",port=10000,reload=True)
 
 @app.get('/UserForGenre/{genre}/')
 def UserForGenre(genre: str):
@@ -101,6 +103,8 @@ def UserForGenre(genre: str):
               }
     return result
 
+if __name__ == "__main__":
+    uvicorn.run("main:app",port=10000,reload=True)
 
 @app.get('/UsersRecommend/{year}/')
 def UsersRecommend(year: int):
@@ -136,6 +140,9 @@ def UsersRecommend(year: int):
                 .rename(columns={'title': 'Game', 'count': 'Positive Reviews'}))
 
     return [{f'Top {i+1}: "{game}" with {reviews} positive reviews'} for i, (game, reviews) in topThree.iterrows()]
+
+if __name__ == "__main__":
+    uvicorn.run("main:app",port=10000,reload=True)
 
 
 @app.get('/UsersNotRecommend/{year}/')
@@ -184,6 +191,9 @@ def UsersNotRecommend(year: int):
 
     return leastThree
 
+
+if __name__ == "__main__":
+    uvicorn.run("main:app",port=10000,reload=True)
 
 @app.get('/sentiment_analysis/{year}/')
 def sentiment_analysis(year: int):
