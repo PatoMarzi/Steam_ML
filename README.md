@@ -11,7 +11,7 @@
 
 # This project simulates what a MLOps Engineer responsibilites and tasks are
 
-#### Deployment [Here](https://steam-game-recommendation.onrender.com/docs)
+## Deployment [Here](https://steam-game-recommendation.onrender.com/docs)
 
 **_NOTE:_** This just covers the basics of a MLOps Engineer, it should be taken as a guide. The aim of this project is to create a Minimum Value Product (MVP) with just enough features to be usable for early-access customers.
 
